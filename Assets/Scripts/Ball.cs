@@ -1,4 +1,3 @@
-
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -20,7 +19,10 @@ public class Ball : MonoBehaviour
     public Transform deathPoint;
     float respawnTimer;
     Vector3 respawnPosition;
-    
+
+    public GameObject playerHasScored;
+    public GameObject enemyHasScored;
+
     void Start()
     {
         source = GetComponent<AudioSource>();
@@ -34,7 +36,6 @@ public class Ball : MonoBehaviour
         {
             transform.position = Vector3.zero;
             GetComponent<Rigidbody2D>().velocity = Vector2.zero;
-            print("ball teleported back to level!");
         }
 
         // if goal, after 2 seconds teleport ball back
@@ -46,6 +47,8 @@ public class Ball : MonoBehaviour
                 transform.position = respawnPosition;
                 respawnTimer = 0;
                 shouldRespawn = false;
+                playerHasScored.GetComponent<Renderer>().enabled = false;
+                enemyHasScored.GetComponent<Renderer>().enabled = false;
             }
         }
     }
@@ -61,6 +64,7 @@ public class Ball : MonoBehaviour
             playerScore++;
             playerScoreText.text = playerScore.ToString();
             respawnPosition = Vector3.right;
+            playerHasScored.GetComponent<Renderer>().enabled = true;
         }
         
         if (other.gameObject.name.Contains("Player Goal"))
@@ -68,6 +72,7 @@ public class Ball : MonoBehaviour
             enemyScore++;
             enemyScoreText.text = enemyScore.ToString();
             respawnPosition = Vector3.left;
+            enemyHasScored.GetComponent<Renderer>().enabled = true;
         }
         
         
