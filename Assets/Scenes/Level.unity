@@ -1298,6 +1298,8 @@ MonoBehaviour:
   goalSound: {fileID: 8300000, guid: f0be525f35e5b476d94def5ad3f397b5, type: 3}
   shouldRespawn: 0
   deathPoint: {fileID: 96785768}
+  playerHasScored: {fileID: 724697560}
+  enemyHasScored: {fileID: 677116288}
 --- !u!82 &593289814
 AudioSource:
   m_ObjectHideFlags: 0
