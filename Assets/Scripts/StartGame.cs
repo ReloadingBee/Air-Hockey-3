@@ -1,9 +1,9 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class PlayButton : MonoBehaviour
+public class StartGame : MonoBehaviour
 {
-    void OnMouseDown()
+    private void OnMouseDown()
     {
         SceneManager.LoadScene("Level");
     }
